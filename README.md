@@ -62,7 +62,7 @@
 
 ### **Step 8: Public Subnet** 
 **What you do:** Set **Number of public subnets** to **0**.  
-**Explanation:** Finance VPC must be completely private — no internet-facing resources.
+**Explanation:** Finance VPC must be completely private, no internet-facing resources.
 
 <img width="1362" height="765" alt="image" src="https://github.com/user-attachments/assets/9c6a5128-4a80-4a62-bc6c-9d7589523b6c" />
 
@@ -152,15 +152,15 @@
 
 ### **Step 19: Instance Type** 
 **What you do:** Select **t3.micro**.  
-**Explanation:** Smallest free-tier eligible instance.
+**Explanation:** free-tier eligible instance.
 
 <img width="1362" height="765" alt="image" src="https://github.com/user-attachments/assets/234a27e7-d4fa-4279-af8d-61a729de005b" />
 
 ---
 
 ### **Step 20: Key Pair** 
-**What you do:** Proceed without a key pair (use EC2 Instance Connect instead).  
-**Explanation:** Simplifies the lab — no need to download .pem files.
+**What you do:** Proceed without a key pair.  
+**Explanation:** Simplifies the lab no need to download .pem files.
 
 <img width="1362" height="765" alt="image" src="https://github.com/user-attachments/assets/c442afc5-6ce7-4d29-91ad-401d696d4cc0" />
 
@@ -232,7 +232,7 @@
 
 ### **Step 29: VPC Peering** 
 **What you do:** In the VPC console, go to **Peering connections**.  
-**Explanation:** VPCs are isolated by default — peering connects them privately.
+**Explanation:** VPCs are isolated by default, peering connects them privately.
 
 <img width="1362" height="765" alt="image" src="https://github.com/user-attachments/assets/39f02673-7b1b-4742-94dc-ffde5cfbc558" />
 
@@ -290,7 +290,7 @@
 
 ### **Step 36: Creating Routes and Security Groups** 
 **What you do:** Search for **EC2** again.  
-**Explanation:** Next phase — allow traffic (security groups) and tell the network where to send packets (routes).
+**Explanation:** Next phase, allow traffic (security groups) and tell the network where to send packets (routes).
 
 <img width="1362" height="765" alt="image" src="https://github.com/user-attachments/assets/0a8df0db-3cdd-40ac-9bfd-09b70d83b064" />
 
@@ -362,7 +362,7 @@
 
 ---
 
-### **Step 45: Click "Save changes"** 
+### **Step 45: Click "Edit Routes and Save changes"** 
 **What you do:**  
 - Click **Add route**.  
 - Destination = other VPC CIDR (e.g., `172.16.0.0/16`).  
@@ -417,7 +417,7 @@
 
 ### **Step 51: EC2 Instance Connect – Create endpoint** 
 **What you do:** Click **Create endpoint**.  
-**Explanation:** AWS provisions the endpoint (takes ~1 minute).
+**Explanation:** AWS provisions the endpoint (can take several minutes).
 
 <img width="1362" height="765" alt="image" src="https://github.com/user-attachments/assets/47a9e278-aeef-4559-a5a4-6a3d35bbf7ff" />
 
@@ -452,7 +452,7 @@ ping <private-IP-of-finance-server>   # Initially fails
 ---
 
 ### **Step 55: Troubleshooting Connectivity Issues** 
-**Fix:** Go back to the Finance security group → Edit inbound rules → Change to **All traffic** from the other two VPC CIDRs only (remove `0.0.0.0/0`).  
+**Fix:** Go back to the Finance security group → Edit inbound rules → Change to **All traffic** from the other two VPC CIDRs.  
 **Explanation:** The previous rule was too restrictive (only ICMP). Broadening to All traffic while keeping source CIDRs limited fixes it.
 
 <img width="1362" height="765" alt="image" src="https://github.com/user-attachments/assets/98deec14-a5ce-4785-a8c2-19dfd877ec3e" />
